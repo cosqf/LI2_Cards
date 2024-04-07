@@ -100,15 +100,17 @@ int verificaConjunto(CARTA linhaCartas[], int tamanho) { // return 1 se for conj
 
 int verificaSequencia(CARTA linhaCartas[], int tamanhoLinha) { // verifica se é uma sequencia
     int resultado = 1;
-    for (int i = 0; i < tamanhoLinha - 1 && resultado; i++) {
-        if (linhaCartas[i].valor + 1 != linhaCartas[i+1].valor ) resultado=0;
+    if (tamanhoLinha <=2) resultado=0;
+    else for (int i = 0; i < tamanhoLinha - 1 && resultado; i++) {
+         if (linhaCartas[i].valor + 1 != linhaCartas[i+1].valor ) resultado=0;
     }
     return resultado;
 }
 
 int verificaSequenciaDupla(CARTA linhaCartas[], int tamanhoLinha) {
     int resultado = 1;
-    for (int i = 0; i < tamanhoLinha - 1 && resultado; i++) {
+    if(tamanhoLinha<6) resultado =0; 
+    else for (int i = 0; i < tamanhoLinha - 1 && resultado; i++) {
         if (i%2==0) 
         {
             if(!valorIgual(&linhaCartas[i],&linhaCartas[i+1])) resultado=0;

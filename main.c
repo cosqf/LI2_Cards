@@ -33,6 +33,9 @@ int main () {
         c = wcslen (todosInputs[i]);
         qsort(inputsConvertidos[i],c);
     }
+
+
+    
     for (int i = 0; i < nlinhas; i++) {
         c = wcslen (todosInputs[i]);
         //for (int j = 0; j < c; j++) {

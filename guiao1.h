@@ -1,7 +1,7 @@
 #ifndef __GUIAO1_H__
 #define __GUIAO1_H__
 
-#define MAX 15          // máximo de cartas que podem ser jogadas de uma vez (mão inteira)
+#define MAX 1000          // máximo de cartas que podem ser jogadas de uma vez (mão inteira)
 
 typedef enum naipe {Espadas = 1, Copas, Ouros, Paus} NAIPE;
 
