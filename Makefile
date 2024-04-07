@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Wextra -pedantic -O2 -g
+CFLAGS = -Wall -Wextra -pedantic -O2
 
 cards: main.o guiao1.o
 	gcc $(CFLAGS) -o $@ $^
@@ -20,7 +20,7 @@ guiao1.o: guiao1.c guiao1.h
 	gcc $(CFLAGS) -c guiao1.c
 
 codigo.zip: *.h *.c
-	zip -9r $@ $^
+	zip -9r $@ $^	
 
 clean:
 	rm main.o guiao1.o cards	

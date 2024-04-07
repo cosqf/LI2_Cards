@@ -27,7 +27,16 @@ int maior (CARTA *,CARTA *);
 
 int partition (CARTA [], int, CARTA *);
 
-void qsort (CARTA [],int);
+void qsort(CARTA [],int);
 
-//void ordena(CARTA [][MAX],int,int);
+int valorIgual(CARTA *, CARTA *);
+
+int verificaConjunto(CARTA [], int);
+
+int verificaSequencia(CARTA [], int );
+
+int verificaSequenciaDupla(CARTA [], int);
+
+void resultado(CARTA [], int);
+
 #endif

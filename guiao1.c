@@ -74,7 +74,64 @@ void qsort (CARTA jogada[],int tamanho)
         qsort(jogada+pos+1,tamanho-pos-1);
     }
 }
-/*void ordena(CARTA jogadas[][MAX],int i,int tamanho){
-    qsort(jogadas[i],tamanho);
+
+int valorIgual(CARTA *c1, CARTA *c2) { // ve se o valor é igual
+int resultado=0;
+  if (c1->valor == c2->valor) resultado= 1; // se o valor for igual dá 1
+  return resultado;
+}
+
+/*int naipeIgual(CARTA c1, CARTA c2) {
+  int resultado;
+  if (c1.naipe == c2.naipe)
+    resultado= 1; // se o valor for igual dá 1
+  else
+    resultado= 0;
+  return resultado;
 }*/
 
+int verificaConjunto(CARTA linhaCartas[], int tamanho) { // return 1 se for conjunto
+    int resultado = 1;
+    for (int i = 0; i < tamanho - 1; i++) {
+        if (!valorIgual(&linhaCartas[i], &linhaCartas[i + 1])) resultado= 0;
+    }
+    return resultado;
+}
+
+int verificaSequencia(CARTA linhaCartas[], int tamanhoLinha) { // verifica se é uma sequencia
+    int resultado = 1;
+    for (int i = 0; i < tamanhoLinha - 1 && resultado; i++) {
+        if (linhaCartas[i].valor + 1 != linhaCartas[i+1].valor ) resultado=0;
+    }
+    return resultado;
+}
+
+int verificaSequenciaDupla(CARTA linhaCartas[], int tamanhoLinha) {
+    int resultado = 1;
+    for (int i = 0; i < tamanhoLinha - 1 && resultado; i++) {
+        if (i%2==0) 
+        {
+            if(!valorIgual(&linhaCartas[i],&linhaCartas[i+1])) resultado=0;
+        }
+        else{
+            if (linhaCartas[i].valor + 1 != linhaCartas[i+1].valor ) resultado=0;
+        }
+    }
+    return resultado;
+}
+
+void resultado(CARTA linhaCartas[], int tamanho){
+    if (verificaConjunto(linhaCartas,tamanho))
+    {
+       wprintf(L"conjunto com %d cartas onde a carta mais alta é %lc\n",tamanho,linhaCartas[tamanho-1].hex); 
+    }
+    else if (verificaSequencia(linhaCartas,tamanho))
+    {
+       wprintf(L"sequência com %d cartas onde a carta mais alta é %lc\n",tamanho,linhaCartas[tamanho-1].hex);
+    }
+    else if (verificaSequenciaDupla(linhaCartas,tamanho))
+    {
+       wprintf(L"dupla sequência com %d cartas onde a carta mais alta é %lc\n",tamanho/2,linhaCartas[tamanho-1].hex);
+    }
+    else wprintf(L"Nada!\n");
+}

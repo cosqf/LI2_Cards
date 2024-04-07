@@ -35,10 +35,11 @@ int main () {
     }
     for (int i = 0; i < nlinhas; i++) {
         c = wcslen (todosInputs[i]);
-        for (int j = 0; j < c; j++) {
-            wprintf (L"%d %d %lc       ", inputsConvertidos[i][j].naipe, inputsConvertidos[i][j].valor, inputsConvertidos[i][j].hex);
-        }
-        wprintf (L"\n");
+        //for (int j = 0; j < c; j++) {
+            // wprintf (L"%d %d %lc       ", inputsConvertidos[i][j].naipe, inputsConvertidos[i][j].valor, inputsConvertidos[i][j].hex);
+        //}
+        //wprintf (L"A maior carta %lc       ",inputsConvertidos[i][c-1].hex);
+        resultado(inputsConvertidos[i],c);
     }
     
 
