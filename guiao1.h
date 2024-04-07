@@ -1,0 +1,24 @@
+#ifndef __GUIAO1_H__
+#define __GUIAO1_H__
+
+#define MAX 14          // máximo de cartas que podem ser jogadas de uma vez (mão inteira)
+
+typedef enum naipe {Espadas = 1, Copas, Ouros, Paus} NAIPE;
+
+typedef enum valor {As = 1, Dois, Tres, Quatro, Cinco, Seis, Sete, Oito, Nove, Dez, Valete, Cavaleiro, Rainha, Rei} VALOR;
+
+typedef struct carta {
+    NAIPE naipe;
+    VALOR valor;
+    wchar_t hex;
+} CARTA;
+
+NAIPE naipe(wchar_t);
+
+VALOR valor(wchar_t);
+
+void regista(wchar_t[][MAX], int);
+
+void converte(wchar_t[][MAX], CARTA[][MAX], int);
+
+#endif
