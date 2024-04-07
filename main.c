@@ -25,17 +25,22 @@ int main () {
     */
 
     CARTA inputsConvertidos[nlinhas][MAX];          // guarda os inputs no formato CARTA (naipe, valor e hexadecimal)
-
-    converte (todosInputs, inputsConvertidos, nlinhas);         // converte os hexadecimais em todosInputs para o formato CARTA (inputsConvertidos)
-
+    int c;
+    converte (todosInputs, inputsConvertidos, nlinhas);     // converte os hexadecimais em todosInputs para o formato CARTA (inputsConvertidos)
+    
+    
     for (int i = 0; i < nlinhas; i++) {
-        int c;
+        c = wcslen (todosInputs[i]);
+        qsort(inputsConvertidos[i],c);
+    }
+    for (int i = 0; i < nlinhas; i++) {
         c = wcslen (todosInputs[i]);
         for (int j = 0; j < c; j++) {
-            wprintf (L"%d %d %lc    ", inputsConvertidos[i][j].naipe, inputsConvertidos[i][j].valor, inputsConvertidos[i][j].hex);
+            wprintf (L"%d %d %lc       ", inputsConvertidos[i][j].naipe, inputsConvertidos[i][j].valor, inputsConvertidos[i][j].hex);
         }
         wprintf (L"\n");
     }
+    
 
     return 0;
 }

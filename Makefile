@@ -1,4 +1,4 @@
-CFLAGS = -Wall -Wextra -pedantic -O2
+CFLAGS = -Wall -Wextra -pedantic -O2 -g
 
 cards: main.o guiao1.o
 	gcc $(CFLAGS) -o $@ $^
