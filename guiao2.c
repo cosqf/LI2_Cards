@@ -6,7 +6,7 @@
 
 // AQUI, TODAS AS QUE DIZEM "equivalente a..." MUDAM APENAS O TIPO (de CARTA para wchar_t)
 
-void leInputs (int ntestes, TESTE inputs[MAX]) {   // lê os inputs para um array 3d, usando como auxiliar a regista (que faz o registo para 2d)
+void leInputs (int ntestes, TESTE inputs[]) {   // lê os inputs para um array 3d, usando como auxiliar a regista (que faz o registo para 2d)
     int nlinhas;
     
     for (int i = 0; i < ntestes; i++) {
@@ -16,7 +16,7 @@ void leInputs (int ntestes, TESTE inputs[MAX]) {   // lê os inputs para um arra
     }
 }
 
-void registaTamanhos (int ntestes, TESTE inputs[MAX]) {
+void registaTamanhos (int ntestes, TESTE inputs[]) {
     size_t tamanho;
     
     for (int i = 0; i < ntestes; i++) {
@@ -72,7 +72,7 @@ void ordenaTeste (TESTE *teste) {
     }
 }
 
-void ordena (int ntestes, TESTE teste[MAX]) {
+void ordena (int ntestes, TESTE teste[]) {
     for (int i = 0; i < ntestes; i++) {
         if (teste[i].tamanho != 0) {
             ordenaTeste (&teste[i]);

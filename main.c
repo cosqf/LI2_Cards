@@ -53,13 +53,19 @@ int main () {
     int ntestes;                                                // nº de testes
     assert (wscanf (L"%d\n", &ntestes) == 1);                   // lê o nº de testes
 
-    TESTE inputs[MAX];
+    TESTE inputs[ntestes];
 
     leInputs (ntestes, inputs);
 
     registaTamanhos (ntestes, inputs);
 
-    ordena (inputs, ntestes);
+    ordena (ntestes, inputs);
+
+    for (int i=0;i < ntestes;i++){
+        for (int j = 0; j < inputs[i].nlinhas;j++){
+            wprintf (L"%ls \n",inputs[i].cartas[j]);
+        }
+    }
 
     return 0;
 }

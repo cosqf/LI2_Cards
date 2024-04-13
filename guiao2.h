@@ -7,9 +7,9 @@ typedef struct teste {
     wchar_t cartas[MAX][MAX];
 } TESTE;
 
-void leInputs (int, TESTE[MAX]);
+void leInputs (int, TESTE[]);
 
-void registaTamanhos (int, TESTE[MAX]);
+void registaTamanhos (int, TESTE[]);
 
 void swap(wchar_t[], int, int);
 
@@ -21,6 +21,6 @@ void qsort (wchar_t[], int);
 
 void ordenaTeste (TESTE *);
 
-void ordena (int, TESTE[MAX]);
+void ordena (int, TESTE[]);
 
 #endif
