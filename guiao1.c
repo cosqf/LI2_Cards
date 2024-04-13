@@ -3,7 +3,7 @@
 #include <assert.h>
 #include "guiao1.h"
 
-void regista(wchar_t todosInputs[][MAX], int nlinhas) {
+void regista(wchar_t todosInputs[][MAX], int nlinhas) {     // lê linha a linha e regista 
     int i;
     wchar_t buffer[MAX];
 
@@ -36,13 +36,13 @@ void converte(wchar_t hexadecimais[][MAX], CARTA convertidos[][MAX], int nlinhas
     }
 }
 
-void swap(CARTA jogada[], int pos1, int pos2) {
+void swapOLD(CARTA jogada[], int pos1, int pos2) {  // troca duas cartas de posição
     CARTA temp = jogada[pos1];
     jogada[pos1] = jogada[pos2];
     jogada[pos2] = temp;
 }
 
-int maior (CARTA *carta1,CARTA *carta2){ // returna 1 se carta1 é maior que carta2
+int maiorOLD (CARTA *carta1,CARTA *carta2){     // retorna 1 se carta1 é maior que carta2
     assert(carta1->hex != carta2->hex);
     int r=0;
     if (carta1->valor > carta2->valor) r=1;
@@ -53,25 +53,25 @@ int maior (CARTA *carta1,CARTA *carta2){ // returna 1 se carta1 é maior que car
     return r;
 }
 
-int partition (CARTA jogada[], int tamanho, CARTA *pivo) { // , pivo- elemento mais direita , menores -> n de elementos menores que o pivo
+int partitionOLD (CARTA jogada[], int tamanho, CARTA *pivo) { // pivo -> elemento mais direita , menores -> n de elementos menores que o pivo
     int menores = 0;
     int i;
     for (i = 0; i < tamanho; i++) {
-        if (maior(pivo,&jogada[i])) {
-            swap (jogada, i, menores);
+        if (maiorOLD(pivo,&jogada[i])) {
+            swapOLD (jogada, i, menores);
             menores++;
         }
     }
     return menores;                
 }                                                
 
-void qsort (CARTA jogada[],int tamanho)
+void qsortOLD (CARTA jogada[],int tamanho)
 {
     if (tamanho > 1){
-        int pos = partition(jogada,tamanho-1,&jogada[tamanho-1]);
-        swap(jogada,pos,tamanho-1);
-        qsort(jogada,pos);
-        qsort(jogada+pos+1,tamanho-pos-1);
+        int pos = partitionOLD(jogada,tamanho-1,&jogada[tamanho-1]);
+        swapOLD(jogada,pos,tamanho-1);
+        qsortOLD(jogada,pos);
+        qsortOLD(jogada+pos+1,tamanho-pos-1);
     }
 }
 

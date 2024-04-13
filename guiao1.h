@@ -1,7 +1,7 @@
 #ifndef __GUIAO1_H__
 #define __GUIAO1_H__
 
-#define MAX 1000          // máximo de cartas que podem ser jogadas de uma vez (mão inteira)
+#define MAX 200          // máximo de cartas que podem ser jogadas de uma vez (mão inteira)
 
 typedef enum naipe {Espadas = 1, Copas, Ouros, Paus} NAIPE;
 
@@ -21,13 +21,13 @@ void regista(wchar_t[][MAX], int);
 
 void converte(wchar_t[][MAX], CARTA[][MAX], int);
 
-void swap(CARTA [], int, int);
+void swapOLD(CARTA [], int, int);
 
-int maior (CARTA *,CARTA *);
+int maiorOLD(CARTA *,CARTA *);
 
-int partition (CARTA [], int, CARTA *);
+int partitionOLD(CARTA [], int, CARTA *);
 
-void qsort(CARTA [],int);
+void qsortOLD(CARTA [],int);
 
 int valorIgual(CARTA *, CARTA *);
 
