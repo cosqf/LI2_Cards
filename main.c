@@ -6,7 +6,7 @@
 #include "guiao2.h"
 
 int main () {
-    /*
+    
     setlocale (LC_CTYPE, "C.UTF-8");
 
     int nlinhas;                         // linhas de teste
@@ -16,7 +16,7 @@ int main () {
 
     regista (todosInputs, nlinhas);      // lê linha a linha e regista 
 
-    /
+    
     for (int i = 0; i < nlinhas; i++) {
         int c;
         c = wcslen (todosInputs[i]);
@@ -24,16 +24,16 @@ int main () {
             wprintf (L"%lc", todosInputs[i][j]);
         wprintf (L"\n");
     }
-    /
+    
 
-    CARTA inputsConvertidos[nlinhas][MAX];          // guarda os inputs no formato CARTA (naipe, valor e hexadecimal)
+         // guarda os inputs no formato CARTA (naipe, valor e hexadecimal)
     int c;
-    converte (todosInputs, inputsConvertidos, nlinhas);     // converte os hexadecimais em todosInputs para o formato CARTA (inputsConvertidos)
+     // converte os hexadecimais em todosInputs para o formato CARTA (inputsConvertidos)
     
     
     for (int i = 0; i < nlinhas; i++) {
         c = wcslen (todosInputs[i]);
-        qsortOLD(inputsConvertidos[i],c);
+        qsort(todosInputs[i],c);
     }
 
 
@@ -44,10 +44,10 @@ int main () {
             // wprintf (L"%d %d %lc       ", inputsConvertidos[i][j].naipe, inputsConvertidos[i][j].valor, inputsConvertidos[i][j].hex);
         //}
         //wprintf (L"A maior carta %lc       ",inputsConvertidos[i][c-1].hex);
-        resultado(inputsConvertidos[i],c);
+        resultado(todosInputs[i],c);
     }
-    */
-
+    
+/*
     setlocale (LC_CTYPE, "C.UTF-8");
 
     int ntestes;                                                // nº de testes
@@ -66,6 +66,6 @@ int main () {
             wprintf (L"%ls \n",inputs[i].cartas[j]);
         }
     }
-
+*/
     return 0;
 }

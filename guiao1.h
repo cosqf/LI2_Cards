@@ -1,42 +1,36 @@
 #ifndef __GUIAO1_H__
 #define __GUIAO1_H__
 
-#define MAX 200          // máximo de cartas que podem ser jogadas de uma vez (mão inteira)
+#define MAX 200
 
 typedef enum naipe {Espadas = 1, Copas, Ouros, Paus} NAIPE;
 
 typedef enum valor {As = 1, Dois, Tres, Quatro, Cinco, Seis, Sete, Oito, Nove, Dez, Valete, Cavaleiro, Rainha, Rei} VALOR;
 
-typedef struct carta {
-    NAIPE naipe;
-    VALOR valor;
-    wchar_t hex;
-} CARTA;
+void regista(wchar_t [][MAX], int);
 
 NAIPE naipe(wchar_t);
 
 VALOR valor(wchar_t);
 
-void regista(wchar_t[][MAX], int);
 
-void converte(wchar_t[][MAX], CARTA[][MAX], int);
 
-void swapOLD(CARTA [], int, int);
+void swap(wchar_t[], int, int);
 
-int maiorOLD(CARTA *,CARTA *);
+int maior(wchar_t, wchar_t);
 
-int partitionOLD(CARTA [], int, CARTA *);
+int partition (wchar_t[], int, wchar_t);
 
-void qsortOLD(CARTA [],int);
+void qsort (wchar_t[], int);
 
-int valorIgual(CARTA *, CARTA *);
+int valorIgual(wchar_t , wchar_t );
 
-int verificaConjunto(CARTA [], int);
+int verificaConjunto(wchar_t[], int);
 
-int verificaSequencia(CARTA [], int );
+int verificaSequencia(wchar_t[], int);
 
-int verificaSequenciaDupla(CARTA [], int);
+int verificaSequenciaDupla(wchar_t[] , int );
 
-void resultado(CARTA [], int);
+void resultado(wchar_t[], int);
 
 #endif
