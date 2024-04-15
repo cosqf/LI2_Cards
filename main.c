@@ -6,7 +6,7 @@
 #include "guiao2.h"
 
 int main () {
-    
+    /*
     setlocale (LC_CTYPE, "C.UTF-8");
 
     int nlinhas;                         // linhas de teste
@@ -25,12 +25,7 @@ int main () {
         wprintf (L"\n");
     }
     
-
-         // guarda os inputs no formato CARTA (naipe, valor e hexadecimal)
     int c;
-     // converte os hexadecimais em todosInputs para o formato CARTA (inputsConvertidos)
-    
-    
     for (int i = 0; i < nlinhas; i++) {
         c = wcslen (todosInputs[i]);
         qsort(todosInputs[i],c);
@@ -40,14 +35,10 @@ int main () {
     
     for (int i = 0; i < nlinhas; i++) {
         c = wcslen (todosInputs[i]);
-        //for (int j = 0; j < c; j++) {
-            // wprintf (L"%d %d %lc       ", inputsConvertidos[i][j].naipe, inputsConvertidos[i][j].valor, inputsConvertidos[i][j].hex);
-        //}
-        //wprintf (L"A maior carta %lc       ",inputsConvertidos[i][c-1].hex);
         resultado(todosInputs[i],c);
     }
-    
-/*
+    */
+
     setlocale (LC_CTYPE, "C.UTF-8");
 
     int ntestes;                                                // nº de testes
@@ -61,11 +52,15 @@ int main () {
 
     ordena (ntestes, inputs);
 
+    /*
     for (int i=0;i < ntestes;i++){
         for (int j = 0; j < inputs[i].nlinhas;j++){
             wprintf (L"%ls \n",inputs[i].cartas[j]);
         }
     }
-*/
+    */
+
+    printaOutput (ntestes, inputs);
+
     return 0;
 }

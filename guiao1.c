@@ -23,24 +23,24 @@ VALOR valor(wchar_t carta) {                    // calcula o valor da carta, que
     return (carta % 16);
 }
 
-void swap(wchar_t jogada[], int pos1, int pos2) {   // troca duas cartas de posição; equivalente a swapOLD
+void swap(wchar_t jogada[], int pos1, int pos2) {   // troca duas cartas de posição
     wchar_t temp = jogada[pos1];
     jogada[pos1] = jogada[pos2];
     jogada[pos2] = temp;
 }
 
-int maior (wchar_t carta1, wchar_t carta2){    // retorna 1 se carta1 é maior que carta2; equivalente a maiorOLD
+int maior (wchar_t carta1, wchar_t carta2){    // retorna 1 se carta1 é maior que carta2
     assert(carta1 != carta2);
     int r = 0;
     if (valor(carta1) > valor(carta2)) r = 1;
     else if (valor(carta1) == valor(carta2)) 
          {
-            if (naipe(carta1) > naipe(carta2)) r=1;
+            if (naipe(carta1) > naipe(carta2)) r = 1;
          }
     return r;
 }
 
-int partition (wchar_t jogada[], int tamanho, wchar_t pivo) { // pivo -> elemento mais direita , menores -> n de elementos menores que o pivo; equivalente a partitionOLD
+int partition (wchar_t jogada[], int tamanho, wchar_t pivo) { // pivo -> elemento mais direita , menores -> n de elementos menores que o pivo
     int menores = 0;
     int i;
     for (i = 0; i < tamanho; i++) {
@@ -62,11 +62,10 @@ void qsort (wchar_t jogada[], int tamanho) {    // equivalente a qsortOLD
 }
 
 
-
 int valorIgual(wchar_t c1, wchar_t c2) { // ve se o valor é igual
-int resultado=0;
-  if (valor(c1) == valor(c2)) resultado= 1; // se o valor for igual dá 1
-  return resultado;
+    int resultado=0;
+    if (valor(c1) == valor(c2)) resultado= 1; // se o valor for igual dá 1
+    return resultado;
 }
 
 int verificaConjunto(wchar_t linhaCartas[], int tamanho) { // return 1 se for conjunto

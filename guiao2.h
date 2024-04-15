@@ -11,16 +11,28 @@ void leInputs (int, TESTE[]);
 
 void registaTamanhos (int, TESTE[]);
 
-void swap(wchar_t[], int, int);
-
-int maior(wchar_t, wchar_t);
-
-int partition (wchar_t[], int, wchar_t);
-
-void qsort (wchar_t[], int);
-
 void ordenaTeste (TESTE *);
 
 void ordena (int, TESTE[]);
+
+int todasConjunto (TESTE *);
+
+int todasSequencia (TESTE *);
+
+int todasSequenciaDupla (TESTE *);
+
+int testeValido (TESTE *);
+
+void swapArray (wchar_t[][MAX], int, int);
+
+int maiorArray (wchar_t[], wchar_t[]);
+
+int partitionArray (wchar_t[][MAX], int, wchar_t[]);
+
+void qsortArray (wchar_t[][MAX], int);
+
+void printaTeste (TESTE *);
+
+void printaOutput (int, TESTE[]);
 
 #endif
