@@ -52,14 +52,6 @@ int main () {
 
     ordena (ntestes, inputs);
 
-    /*
-    for (int i=0;i < ntestes;i++){
-        for (int j = 0; j < inputs[i].nlinhas;j++){
-            wprintf (L"%ls \n",inputs[i].cartas[j]);
-        }
-    }
-    */
-
     printaOutput (ntestes, inputs);
 
     return 0;

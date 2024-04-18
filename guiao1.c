@@ -52,7 +52,7 @@ int partition (wchar_t jogada[], int tamanho, wchar_t pivo) { // pivo -> element
     return menores;                
 }
 
-void qsort (wchar_t jogada[], int tamanho) {    // equivalente a qsortOLD
+void qsort (wchar_t jogada[], int tamanho) {    // ordena uma jogada
     if (tamanho > 1){
         int pos = partition(jogada,tamanho-1,jogada[tamanho-1]);
         swap(jogada,pos,tamanho-1);
@@ -85,7 +85,7 @@ int verificaSequencia(wchar_t linhaCartas[], int tamanhoLinha) { // verifica se 
     return resultado;
 }
 
-int verificaSequenciaDupla(wchar_t linhaCartas[], int tamanhoLinha) {
+int  verificaSequenciaDupla(wchar_t linhaCartas[], int tamanhoLinha) { // verifica se é uma sequência dupla
     int resultado = 1;
     if(tamanhoLinha<6) resultado =0; 
     else for (int i = 0; i < tamanhoLinha - 1 && resultado; i++) {
@@ -101,7 +101,7 @@ int verificaSequenciaDupla(wchar_t linhaCartas[], int tamanhoLinha) {
 }
 
 
-void resultado(wchar_t linhaCartas[], int tamanho){
+void resultado(wchar_t linhaCartas[], int tamanho){     // imprime o resultado, conforme o tipo de combinação
     if (verificaConjunto(linhaCartas,tamanho))
     {
        wprintf(L"conjunto com %d cartas onde a carta mais alta é %lc\n",tamanho,linhaCartas[tamanho-1]); 
