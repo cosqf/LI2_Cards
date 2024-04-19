@@ -22,6 +22,9 @@ guiao1.o: guiao1.c guiao1.h
 guiao2.o: guiao2.c guiao2.h guiao1.h
 	gcc $(CFLAGS) -c guiao2.c
 
+#guiao3.o: guiao3.c guiao3.h guiao2.h guiao1.h
+#	gcc $(CFLAGS) -c guiao3.c
+
 codigo.zip: *.h *.c
 	zip -9r $@ $^	
 

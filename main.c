@@ -35,7 +35,7 @@ int main () {
     
     for (int i = 0; i < nlinhas; i++) {
         c = wcslen (todosInputs[i]);
-        resultado(todosInputs[i],c);
+        printResultado(todosInputs[i],c);
     }
     */
 

@@ -101,7 +101,7 @@ int  verificaSequenciaDupla(wchar_t linhaCartas[], int tamanhoLinha) { // verifi
 }
 
 
-void resultado(wchar_t linhaCartas[], int tamanho){     // imprime o resultado, conforme o tipo de combinação
+void printResultado(wchar_t linhaCartas[], int tamanho){     // imprime o resultado, conforme o tipo de combinação
     if (verificaConjunto(linhaCartas,tamanho))
     {
        wprintf(L"conjunto com %d cartas onde a carta mais alta é %lc\n",tamanho,linhaCartas[tamanho-1]); 

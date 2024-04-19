@@ -31,6 +31,6 @@ int verificaSequencia(wchar_t[], int);
 
 int verificaSequenciaDupla(wchar_t[] , int );
 
-void resultado(wchar_t[], int);
+void printResultado(wchar_t[], int);
 
 #endif

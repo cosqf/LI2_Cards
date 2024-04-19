@@ -14,11 +14,9 @@ void leInputs (int ntestes, TESTE inputs[]) {   // constrói o array de TESTEs, 
     }
 }
 
-void registaTamanhos (int ntestes, TESTE inputs[]) {    // regista os tamanhos para cada struct; se este é 0,
-    size_t tamanho;                                     // as combinações nessa struct não são do mesmo tipo;
-                                                        // caso contrário, este tamanho corresponde ao nº de cartas de cada jogada (é o mesmo)
-    for (int i = 0; i < ntestes; i++) {
-        tamanho = wcslen (inputs[i].cartas[0]);
+void registaTamanhos (int ntestes, TESTE inputs[]) {        // regista os tamanhos para cada struct; se este é 0,
+    for (int i = 0; i < ntestes; i++) {                     // as combinações nessa struct não são do mesmo tipo;
+        size_t tamanho = wcslen (inputs[i].cartas[0]);      // caso contrário, este tamanho corresponde ao nº de cartas de cada jogada (é o mesmo)
         for (int j = 1; j < inputs[i].nlinhas && tamanho != 0; j++) {
             if (tamanho != wcslen (inputs[i].cartas[j])) tamanho = 0;
         }
