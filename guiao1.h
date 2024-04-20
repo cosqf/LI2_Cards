@@ -1,7 +1,7 @@
 #ifndef __GUIAO1_H__
 #define __GUIAO1_H__
 
-#define MAX 56
+#define MAX 50
 
 typedef enum naipe {Espadas = 1, Copas, Ouros, Paus} NAIPE;
 

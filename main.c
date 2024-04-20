@@ -65,5 +65,9 @@ int main () {
 
     input (ntestes, inputs);
 
+    organizaJogadas(ntestes,inputs);
+
+    output(ntestes,inputs);
+
     return 0;
 }
