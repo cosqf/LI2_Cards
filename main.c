@@ -4,11 +4,13 @@
 #include <assert.h>
 #include "guiao1.h"
 #include "guiao2.h"
+#include "guiao3.h"
 
 int main () {
-    /*
     setlocale (LC_CTYPE, "C.UTF-8");
 
+    
+    /*
     int nlinhas;                         // linhas de teste
     assert (wscanf (L"%d\n", &nlinhas) == 1);          // lê o nº de linhas de teste
 
@@ -39,8 +41,8 @@ int main () {
     }
     */
 
-    setlocale (LC_CTYPE, "C.UTF-8");
 
+    /*
     int ntestes;                                                // nº de testes
     assert (wscanf (L"%d\n", &ntestes) == 1);                   // lê o nº de testes
 
@@ -53,6 +55,15 @@ int main () {
     ordena (ntestes, inputs);
 
     printaOutput (ntestes, inputs);
+    */
+
+
+    int ntestes;                                                // nº de testes
+    assert (wscanf (L"%d\n", &ntestes) == 1);                   // lê o nº de testes
+
+    TESTEC inputs[ntestes];
+
+    input (ntestes, inputs);
 
     return 0;
 }
