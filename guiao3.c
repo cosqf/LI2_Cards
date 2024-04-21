@@ -125,13 +125,17 @@ void output (int ntestes,TESTEC inputs[])
     for (int i = 0; i < ntestes; i++) {             // ou, caso contrário, ordena as linhas e imprime-as
         wprintf (L"Teste %d\n", i+1);
         if (jogadaValida(&inputs[i]) && inputs[i].jogada[0]!= 'P') retiraCartas(&inputs[i]);
-        qsort(inputs[i].mao,wcslen(inputs[i].mao));
-        size_t j=0;
-        for(;j<wcslen(inputs[i].mao)-1 &&inputs[i].mao[0] != 0;j++)
+        if (inputs[i].mao[0] != '\0')
         {
-        wprintf(L"%lc ",inputs[i].mao[j]);
+            qsort(inputs[i].mao,wcslen(inputs[i].mao));
+            size_t j=0;
+            for(;j<wcslen(inputs[i].mao)-1 &&inputs[i].mao[0] != 0;j++)
+            {
+            wprintf(L"%lc ",inputs[i].mao[j]);
+            }
+            wprintf(L"%lc\n",inputs[i].mao[j]);
         }
-        wprintf(L"%lc\n",inputs[i].mao[j]);
+        else wprintf(L"\n");
     }
 }
 

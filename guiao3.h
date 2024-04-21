@@ -4,7 +4,7 @@
 typedef struct testec {
     int njogadas;
     wchar_t mao[50];
-    wchar_t jogadasAns[56][50];
+    wchar_t jogadasAns[100][50];
     wchar_t jogada[50];
 } TESTEC;
 
