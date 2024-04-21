@@ -5,6 +5,19 @@
 #include "guiao2.h"
 #include "guiao3.h"
 
+
+void registaC(wchar_t todosInputs[][20], int nlinhas) {     // lê linha a linha e regista 
+    int i;
+    wchar_t buffer[20];
+
+    for (i = 0; i < nlinhas; i++) {
+        assert (fgetws (buffer, 20, stdin) != NULL);
+        assert (buffer[wcslen (buffer) - 1] == '\n');
+        buffer [wcslen (buffer) - 1] = '\0';
+        wcscpy (todosInputs[i], buffer);
+    }
+}
+
 void input (int ntestes, TESTEC inputs[]) {
     wchar_t buffer[MAX];
 
@@ -17,7 +30,7 @@ void input (int ntestes, TESTEC inputs[]) {
         buffer [wcslen (buffer) - 1] = '\0';
         wcscpy (inputs[i].mao, buffer);
         
-        regista (inputs[i].jogadasAns, inputs[i].njogadas);
+        registaC (inputs[i].jogadasAns, inputs[i].njogadas);
         
         assert (fgetws (buffer, MAX, stdin) != NULL);
         assert (buffer[wcslen (buffer) - 1] == '\n');
@@ -45,7 +58,7 @@ int TresPasso (TESTEC *teste)
             i++;
         }
     }
-    if (r==1) i=0;  
+    if (r==1) i=-1;  
     return i;  // devolve 0 se os ultimos 3 sao PASSO ou devolve a posicao da linha que nao foi PASSO;
 }
 
@@ -80,7 +93,7 @@ int verificaRei (TESTEC *teste)
     }
     else if (valor(teste->jogadasAns[linha][1])==Rei && valor(teste->jogadasAns[linha][0])==Rei && valor(teste->jogadasAns[linha][2])==Rei && tamanhoAns == 3) 
     {
-        if (tamanho == 10 && verificaSequenciaDupla(teste->jogada,tamanho)) r=1;
+        if (tamanho >= 10 && verificaSequenciaDupla(teste->jogada,tamanho)) r=1;
     }
     return r;
 }
@@ -94,7 +107,7 @@ int jogadaValida(TESTEC *teste) {
     if (jogadaPossivel(teste) && teste->njogadas==0) r=1;
     if (jogadaPossivel(teste) && r==0)
     {
-        if(linha == 0) r=1;
+        if(linha == -1) r=1;
         else if (valor(teste->jogadasAns[linha][0])==Rei) r=verificaRei(teste);
 
         else if (wcslen(teste->jogadasAns[linha]) == tamanho)

@@ -3,9 +3,9 @@
 
 typedef struct testec {
     int njogadas;
-    wchar_t mao[50];
-    wchar_t jogadasAns[100][50];
-    wchar_t jogada[50];
+    wchar_t mao[40];
+    wchar_t jogadasAns[250][20];
+    wchar_t jogada[20];
 } TESTEC;
 
 void input (int, TESTEC[]);
