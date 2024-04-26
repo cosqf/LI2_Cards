@@ -5,6 +5,7 @@
 #include "guiao1.h"
 #include "guiao2.h"
 #include "guiao3.h"
+#include "guiao4.h"
 
 int main () {
     setlocale (LC_CTYPE, "C.UTF-8");
@@ -57,7 +58,7 @@ int main () {
     printaOutput (ntestes, inputs);
     */
 
-
+    /*
     int ntestes;                                                // nº de testes
     assert (wscanf (L"%d\n", &ntestes) == 1);                   // lê o nº de testes
 
@@ -68,6 +69,14 @@ int main () {
     organizaJogadas(ntestes,inputs);
 
     output(ntestes,inputs);
+    */
+
+    int ntestes;
+    assert (wscanf (L"%d\n", &ntestes) == 1);
+
+    TESTED inputs[ntestes];
+
+    getTestes (inputs, ntestes);
 
     return 0;
 }
