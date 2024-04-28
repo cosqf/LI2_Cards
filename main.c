@@ -42,7 +42,6 @@ int main () {
     }
     */
 
-
     /*
     int ntestes;                                                // nº de testes
     assert (wscanf (L"%d\n", &ntestes) == 1);                   // lê o nº de testes

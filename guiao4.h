@@ -9,8 +9,20 @@ typedef struct tested {
     wchar_t mao[MAX_MAO];
 } TESTED;
 
+typedef enum comb {Nada, Conjunto, Sequencia, DuplaSequencia} COMBINACAO;
+
 void getLinha (wchar_t[]);
 
 void getTestes (TESTED[], int);
+
+COMBINACAO combinacaoUltima (wchar_t[]);
+
+void geraCombinacoes (TESTED *);
+
+void geraConjuntos (wchar_t[], int, wchar_t);
+
+void geraSequencias (wchar_t[], int, wchar_t);
+
+void geraDuplasSequencias (wchar_t[], int, wchar_t);
 
 #endif
