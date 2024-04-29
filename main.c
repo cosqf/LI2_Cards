@@ -77,5 +77,7 @@ int main () {
 
     getTestes (inputs, ntestes);
 
+    geraCombinacoes (inputs);
+
     return 0;
 }

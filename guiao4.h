@@ -19,7 +19,17 @@ COMBINACAO combinacaoUltima (wchar_t[]);
 
 void geraCombinacoes (TESTED *);
 
-void geraConjuntos (wchar_t[], int, wchar_t);
+void geraConjuntos (wchar_t [], int , wchar_t );
+
+int frequencia (wchar_t [], wchar_t );
+
+void filtraArray (wchar_t [], int , wchar_t []);
+
+void printaComb (wchar_t []);
+
+void iniciaALista (wchar_t [],wchar_t [], int );
+
+void adicionaAlista(int , wchar_t [], wchar_t [], int , int );
 
 void geraSequencias (wchar_t[], int, wchar_t);
 
