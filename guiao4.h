@@ -15,7 +15,14 @@ void getLinha (wchar_t[]);
 
 void getTestes (TESTED[], int);
 
+
 COMBINACAO combinacaoUltima (wchar_t[]);
+
+int frequencia (wchar_t []);
+
+void escreve (wchar_t [],int);
+
+void func (wchar_t [],int); 
 
 void geraCombinacoes (TESTED *);
 
@@ -31,8 +38,9 @@ void iniciaALista (wchar_t [],wchar_t [], int );
 
 void adicionaAlista(int , wchar_t [], wchar_t [], int , int );
 
-void geraSequencias (wchar_t[], int, wchar_t);
 
-void geraDuplasSequencias (wchar_t[], int, wchar_t);
+//void geraSequencias (wchar_t[], int, wchar_t);
+
+//void geraDuplasSequencias (wchar_t[], int, wchar_t);
 
 #endif
