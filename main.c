@@ -77,5 +77,10 @@ int main () {
 
     getTestes (inputs, ntestes);
 
+    for (int i=0;i<ntestes;i++)
+    {
+        geraCombinacoes(&inputs[i]);
+    }
+
     return 0;
 }
