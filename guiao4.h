@@ -30,16 +30,18 @@ int frequencia (wchar_t [], wchar_t );
 
 void filtraArray (wchar_t [], int , wchar_t []);
 
-void printComb(wchar_t [], int , wchar_t) ;
+void printConj(wchar_t [], int , wchar_t);
 
-void iniciaALista (wchar_t []);
+void printSeq(wchar_t [], int , wchar_t);
 
-void combina(wchar_t [], int, int , wchar_t [], int , wchar_t);
+void printDupSeq(wchar_t [], int , wchar_t);
 
-void printSeq (wchar_t [], int , wchar_t);
+void combina(wchar_t [], int, int , wchar_t [], int , wchar_t, COMBINACAO);
 
-//void geraSequencias (wchar_t[], int, wchar_t);
+void geraSequencias (wchar_t[], int, wchar_t);
 
-//void geraDuplasSequencias (wchar_t[], int, wchar_t);
+void geraDuplasSequencias (wchar_t[], int, wchar_t);
+
+void geraRei (wchar_t [], int , wchar_t , int );
 
 #endif

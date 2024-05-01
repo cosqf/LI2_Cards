@@ -39,55 +39,62 @@ void geraCombinacoes (TESTED *teste) {      // PÔR AQUI OS CASOS DOS REIS
     int size_ult = wcslen(teste->ultima);
     wchar_t maior = teste->ultima[size_ult-1];
     
-    if (r == Conjunto)  geraConjuntos (teste->mao, size_ult, maior);
-    //else if (r == Sequencia) geraSequencias (teste->mao, size_ult, maior);
-    // else if (r == DuplaSequencia) geraDuplasSequencias (teste->mao, size_ult, maior);
+    // reis
+    if (size_ult == 1 && valor (maior) == Rei) geraRei (teste->mao, size_ult, maior, 1);
+
+    else if (size_ult == 2 && valor (teste->ultima[0]) == valor (teste->ultima[1]) && 
+                              valor (teste->ultima[0]) == Rei) geraRei (teste->mao, size_ult, maior, 2);
+
+    else if (size_ult == 3 && valor (teste->ultima[0]) == valor (teste->ultima[1]) && 
+                              valor (teste->ultima[1]) == valor (teste->ultima[2]) &&
+                              valor (teste->ultima[0]) == Rei) geraRei (teste->mao, size_ult, maior, 3);
+
+
+    else if (r == Conjunto)  geraConjuntos (teste->mao, size_ult, maior);
+    else if (r == Sequencia) geraSequencias (teste->mao, size_ult, maior);
+    else if (r == DuplaSequencia) geraDuplasSequencias (teste->mao, size_ult, maior);
 }
 
-/*
-int frequencia (wchar_t mao[]){
-    int freq=1;
-        for (size_t j =0;j<wcslen(mao)-1;j++) {
-        if(valor(mao[j]) ==valor(mao[j+1])) freq++; 
+void geraRei (wchar_t mao[], int size_ult, wchar_t maior_ult, int x) {
+    if (x == 1) {
+
     }
-    return freq;
-}
+    else if (x==2) {
 
-void filtraArray (wchar_t mao_maiores[], int size_ult, wchar_t mao_usable[]){
-
-    int i;
-    for (i = 0; mao_maiores[i]; i++) {
-        if ()
     }
+    else if (x==3) {
 
-    for (size_t j =0 ;j<wcslen(mao_maiores);) // n tenho certeza se tenho que por -1
-    {
-        int freq = frequencia(mao_maiores+j);
-        if (freq >= size_ult) {
-            wcsncpy(mao_usable,mao_maiores+j,freq);
-        }
-        j=j+freq;
     }
 }
-
-*/
 
 void geraConjuntos  (wchar_t mao[], int size_ult, wchar_t maior_ult) {
-    //for (i = 0; mao[i] && maior(maior_ult, mao[i]); i++);
-
-    //wchar_t mao_maiores[wcslen(mao)-i];
-    //wcscpy(mao_maiores,mao+i);
     wchar_t mao_usable[MAX_MAO] = {0};
 
     filtraArray (mao, size_ult, mao_usable);
 
     wchar_t combinacoes[MAX_MAO] = {0};
     int size_mao = wcslen(mao_usable);
+
     if (mao_usable[0] == '\0' || maior (maior_ult, mao_usable[size_mao-1])) wprintf (L"PASSO\n");
-    else {
-        iniciaALista(combinacoes);
-        combina (mao_usable, size_mao, size_ult, combinacoes, 0, maior_ult);
-    }
+    else combina (mao_usable, size_mao, size_ult, combinacoes, 0, maior_ult, Conjunto);
+}
+
+void geraSequencias (wchar_t mao[], int size_ult, wchar_t maior_ult) {
+
+    wchar_t combinacoes[MAX_MAO] = {0};
+    int size_mao = wcslen(mao);
+
+    if (mao[0] == '\0' || maior (maior_ult, mao[size_mao-1])) wprintf (L"PASSO\n");
+    else combina (mao, size_mao, size_ult, combinacoes, 0, maior_ult, Sequencia);
+}
+
+void geraDuplasSequencias (wchar_t mao[], int size_ult, wchar_t maior_ult) {
+
+    wchar_t combinacoes[MAX_MAO] = {0};
+    int size_mao = wcslen(mao);
+    if (mao[0] == '\0' || maior (maior_ult, mao[size_mao-1])) wprintf (L"PASSO\n");
+    else combina (mao, size_mao, size_ult, combinacoes, 0, maior_ult, DuplaSequencia);
+
 }
 
 int frequencia (wchar_t mao[], wchar_t carta) {
@@ -109,27 +116,24 @@ void filtraArray (wchar_t mao_maiores[], int size_ult, wchar_t mao_usable[]){
     }
 }
 
-void iniciaALista (wchar_t mao[]){
-    for (int i = 0; mao[i] != 0 ; i++){
-        mao[i] = L'\0';
-    }
-}
-
-void combina(wchar_t input[], int tamanho, int num, wchar_t combinacao[], int iter, wchar_t maior_ult) {
+void combina(wchar_t input[], int tamanho, int num, wchar_t combinacao[], int iter, wchar_t maior_ult, COMBINACAO c) { 
     if (num == 0) {
-        printComb(combinacao, iter, maior_ult);
+        if (c == Conjunto) printConj (combinacao, iter, maior_ult);
+        else if (c == Sequencia) printSeq (combinacao, iter, maior_ult);
+        else if (c == DuplaSequencia) printDupSeq (combinacao, iter, maior_ult);
+        
         return;
     }
     for (int i = 0; i < tamanho; i++) {
         combinacao[iter] = input[i];
-        combina (input + i + 1, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult);
+        combina (input + i + 1, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult, c);
     }
 }
 
-void printComb(wchar_t combinacao[], int iter, wchar_t maior_ult) {
-    if (maior (combinacao[iter-1], maior_ult) && verificaConjunto (combinacao, iter)) {
+void printConj(wchar_t conj[], int iter, wchar_t maior_ult) {
+    if (maior (conj[iter-1], maior_ult) && verificaConjunto (conj, iter)) {
         for (int i = 0; i < iter; i++) {
-            wprintf(L"%lc ", combinacao[i]);
+            wprintf(L"%lc ", conj[i]);
         }
         wprintf(L"\n");
     }
@@ -137,6 +141,15 @@ void printComb(wchar_t combinacao[], int iter, wchar_t maior_ult) {
 
 void printSeq (wchar_t seq[], int iter, wchar_t maior_ult) {
     if (maior (seq[iter-1], maior_ult) && verificaSequencia (seq, iter)) {
+        for (int i = 0; i < iter; i++) {
+            wprintf(L"%lc ", seq[i]);
+        }
+        wprintf(L"\n");
+    }
+}
+
+void printDupSeq (wchar_t seq[], int iter, wchar_t maior_ult) {
+    if (maior (seq[iter-1], maior_ult) && verificaSequenciaDupla (seq, iter)) {
         for (int i = 0; i < iter; i++) {
             wprintf(L"%lc ", seq[i]);
         }
