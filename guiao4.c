@@ -85,7 +85,6 @@ void geraConjuntos  (wchar_t mao[], int size_ult, wchar_t maior_ult) {
     int size_mao = wcslen(mao_usable);
     if (mao_usable[0] == '\0' || maior (maior_ult, mao_usable[size_mao-1])) wprintf (L"PASSO\n");
     else {
-        int size_mao = wcslen (mao_usable);
         iniciaALista(combinacoes);
         combina (mao_usable, size_mao, size_ult, combinacoes, 0, maior_ult);
     }

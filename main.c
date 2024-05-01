@@ -76,8 +76,12 @@ int main () {
     TESTED inputs[ntestes];
 
     getTestes (inputs, ntestes);
-
-    geraCombinacoes (inputs);
+    
+    for (int i=0;i<ntestes;i++)
+    {
+        wprintf (L"Teste %d\n", i+1);
+        geraCombinacoes(&inputs[i]);
+    }
 
     return 0;
 }
