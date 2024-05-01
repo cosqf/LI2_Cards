@@ -18,8 +18,6 @@ void getTestes (TESTED[], int);
 
 COMBINACAO combinacaoUltima (wchar_t[]);
 
-int frequencia (wchar_t []);
-
 void escreve (wchar_t [],int);
 
 void func (wchar_t [],int); 
@@ -32,12 +30,13 @@ int frequencia (wchar_t [], wchar_t );
 
 void filtraArray (wchar_t [], int , wchar_t []);
 
-void printaComb (wchar_t []);
+void printComb(wchar_t [], int , wchar_t) ;
 
-void iniciaALista (wchar_t [],wchar_t [], int );
+void iniciaALista (wchar_t []);
 
-void adicionaAlista(int , wchar_t [], wchar_t [], int , int );
+void combina(wchar_t [], int, int , wchar_t [], int , wchar_t);
 
+void printSeq (wchar_t [], int , wchar_t);
 
 //void geraSequencias (wchar_t[], int, wchar_t);
 
