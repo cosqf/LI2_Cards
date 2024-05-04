@@ -32,16 +32,18 @@ void filtraArray (wchar_t [], int , wchar_t []);
 
 void printConj(wchar_t [], int , wchar_t);
 
-void printSeq(wchar_t [], int , wchar_t);
+void printSeq(wchar_t [], int , wchar_t,int *);
 
-void printDupSeq(wchar_t [], int , wchar_t);
+void printDupSeq(wchar_t [], int , wchar_t,int *);
 
-void combina(wchar_t [], int, int , wchar_t [], int , wchar_t, COMBINACAO);
+void combina(wchar_t [], int, int , wchar_t [], int , wchar_t, COMBINACAO, int *);
 
 void geraSequencias (wchar_t[], int, wchar_t);
 
-void geraDuplasSequencias (wchar_t[], int, wchar_t);
+void geraDuplasSequencias (wchar_t[], int, wchar_t,int);
 
-void geraRei (wchar_t [], int , wchar_t , int );
+void geraRei (wchar_t [], int , wchar_t );
+
+int geraConjuntosReis (wchar_t [], int , wchar_t);
 
 #endif
