@@ -18,17 +18,21 @@ void getTestes (TESTED[], int);
 
 COMBINACAO combinacaoUltima (wchar_t[]);
 
-void escreve (wchar_t [],int);
-
-void func (wchar_t [],int); 
-
 void geraCombinacoes (TESTED *);
 
 void geraConjuntos (wchar_t [], int , wchar_t );
 
 int frequencia (wchar_t [], wchar_t );
 
-void filtraArray (wchar_t [], int , wchar_t []);
+void filtraConj (wchar_t [], int , wchar_t []);
+
+void filtraSeq (wchar_t [], int , wchar_t [], int );
+
+int freqSeq (wchar_t [],int,int);
+
+void filtraDupSeq (wchar_t [], int , wchar_t [], int );
+
+int freqDupSeq (wchar_t [],int,int);
 
 void printConj(wchar_t [], int , wchar_t);
 
@@ -36,7 +40,11 @@ void printSeq(wchar_t [], int , wchar_t,int *);
 
 void printDupSeq(wchar_t [], int , wchar_t,int *);
 
-void combina(wchar_t [], int, int , wchar_t [], int , wchar_t, COMBINACAO, int *);
+void combinaConj(wchar_t [], int, int , wchar_t [], int , wchar_t, int *);
+
+void combinaSeq(wchar_t [], int, int , wchar_t [], int , wchar_t, int *);
+
+void combinaDupSeq(wchar_t [], int, int , wchar_t [], int , wchar_t, int *);
 
 void geraSequencias (wchar_t[], int, wchar_t);
 
