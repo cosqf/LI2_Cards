@@ -122,6 +122,7 @@ void geraDuplasSequencias (wchar_t mao[], int size_ult, wchar_t maior_ult, int r
     wchar_t mao_usable[MAX_MAO] = {0};
 
     filtraDupSeq ( mao, size_ult, mao_usable, size_mao);
+
     wchar_t size_mao_usable = wcslen(mao_usable);
     wchar_t combinacoes[MAX_MAO] = {0};
 
@@ -192,28 +193,25 @@ void filtraDupSeq (wchar_t mao_maiores[], int size_ult, wchar_t mao_usable[], in
                 }
                 j = t;
             }
-            else i++;
+            else i += freq -1;
         }
     }
 }
 
 int freqDupSeq (wchar_t mao[], int sizeMao, int index) { 
     int i, freq = 2, continua =1;
-    for (i = index+1; i<sizeMao-1; i++) {
+    for (i = index+1; i<sizeMao-1 && continua; i++) {
         VALOR prox = valor(mao[i+1]);
         VALOR atual = valor(mao[i]);
         VALOR ant = valor(mao[i-1]);
-        if (continua && 
-                    ((atual == ant && prox == atual +1) ||
-                    (atual == ant + 1 && atual == prox) ||
-                    (atual == ant && atual == prox))) freq++;
+        if (((atual == ant && prox == atual +1) ||
+             (atual == ant + 1 && atual == prox) ||
+             (atual == ant && atual == prox))) freq++;
         else continua = 0;
     }
     
     return freq;
 }
-
-
 
 void combinaConj(wchar_t input[], int tamanho, int num, wchar_t combinacao[], int iter, wchar_t maior_ult, int *check) {
     if (num == 0) {
@@ -231,7 +229,7 @@ void combinaSeq(wchar_t input[], int tamanho, int num, wchar_t combinacao[], int
     }
     for (int i = 0; i < tamanho; i++) {
         combinacao[iter] = input[i];
-        if (input[i+1] != '\0' && valor (input[i]) == valor (input[i+1]) ) combinaSeq (input + i + 2, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult,check);
+        if (i+1 < tamanho && valor (input[i]) == valor (input[i+1]) ) combinaSeq (input + i + 2, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult,check);
         else combinaSeq (input + i + 1, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult, check);
     }
 }
@@ -242,17 +240,11 @@ void combinaDupSeq(wchar_t input[], int tamanho, int num, wchar_t combinacao[], 
     }
     for (int i = 0; i < tamanho; i++) {
         combinacao[iter] = input[i];
-        
-/*
-        if (input[i+1] != '\0' && (input[i+2] != '\0') && 
-                                valor (input[i]) == valor (input[i+1]) && valor (input[i]) == valor (input[i+2]))
-                                combinaDupSeq (input + i + 2, tamanho - i - 2, num - 1, combinacao, iter + 1, maior_ult,check);
 
-        else combinaDupSeq (input + i + 1, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult,check);
-*/
-       combinaDupSeq (input + i + 1, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult, check);
+        combinaDupSeq (input + i + 1, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult, check);
     }
 }
+
 
 void printConj(wchar_t conj[], int iter, wchar_t maior_ult) {
     int i;
@@ -272,7 +264,6 @@ void printSeq (wchar_t seq[], int iter, wchar_t maior_ult,int *check) {
         }
         wprintf(L"%lc\n", seq[i]);
         (*check)=1;
-
     }
 }
 
