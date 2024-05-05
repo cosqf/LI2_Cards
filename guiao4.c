@@ -217,7 +217,7 @@ void combinaConj(wchar_t input[], int tamanho, int num, wchar_t combinacao[], in
     if (num == 0) {
         printConj (combinacao, iter, maior_ult);
     }
-    for (int i = 0; i < tamanho; i++) {
+    else for (int i = 0; i < tamanho; i++) {
         combinacao[iter] = input[i];
         combinaConj (input + i + 1, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult,check);
     }
@@ -227,7 +227,7 @@ void combinaSeq(wchar_t input[], int tamanho, int num, wchar_t combinacao[], int
     if (num == 0) {
         printSeq (combinacao, iter, maior_ult, check);
     }
-    for (int i = 0; i < tamanho; i++) {
+    else for (int i = 0; i < tamanho; i++) {
         combinacao[iter] = input[i];
         if (i+1 < tamanho && valor (input[i]) == valor (input[i+1]) ) combinaSeq (input + i + 2, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult,check);
         else combinaSeq (input + i + 1, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult, check);
@@ -238,7 +238,7 @@ void combinaDupSeq(wchar_t input[], int tamanho, int num, wchar_t combinacao[], 
     if (num == 0) {
         printDupSeq (combinacao, iter, maior_ult, check);
     }
-    for (int i = 0; i < tamanho; i++) {
+    else for (int i = 0; i < tamanho; i++) {
         combinacao[iter] = input[i];
 
         combinaDupSeq (input + i + 1, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult, check);
