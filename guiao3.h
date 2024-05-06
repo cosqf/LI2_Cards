@@ -18,6 +18,8 @@ int jogadaPossivel (TESTEC *);
 
 int verificaRei (TESTEC *);
 
+int verificaReiAux (TESTEC *);
+
 int jogadaValida(TESTEC *);
 
 void retiraCartas(TESTEC *);

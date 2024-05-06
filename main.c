@@ -19,15 +19,6 @@ int main () {
 
     regista (todosInputs, nlinhas);      // lê linha a linha e regista 
 
-    
-    for (int i = 0; i < nlinhas; i++) {
-        int c;
-        c = wcslen (todosInputs[i]);
-        for (int j = 0; j < c; j++)
-            wprintf (L"%lc", todosInputs[i][j]);
-        wprintf (L"\n");
-    }
-    
     int c;
     for (int i = 0; i < nlinhas; i++) {
         c = wcslen (todosInputs[i]);
@@ -55,9 +46,9 @@ int main () {
     ordena (ntestes, inputs);
 
     printaOutput (ntestes, inputs);
-    */
-
-    /*
+    
+*/
+    
     int ntestes;                                                // nº de testes
     assert (wscanf (L"%d\n", &ntestes) == 1);                   // lê o nº de testes
 
@@ -68,8 +59,8 @@ int main () {
     organizaJogadas(ntestes,inputs);
 
     output(ntestes,inputs);
-    */
-
+    
+/*
     int ntestes;
     assert (wscanf (L"%d\n", &ntestes) == 1);
 
@@ -82,6 +73,6 @@ int main () {
         wprintf (L"Teste %d\n", i+1);
         geraCombinacoes(&inputs[i]);
     }
-
+*/
     return 0;
 }

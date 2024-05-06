@@ -83,6 +83,7 @@ int verificaRei (TESTEC *teste)
     int linha = TresPasso(teste);
     int tamanho = wcslen(teste->jogada);
     int tamanhoAns = wcslen(teste->jogadasAns[linha]);
+    r = verificaReiAux (teste);
     if (valor(teste->jogadasAns[linha][0])==Rei && tamanhoAns == 1) 
     {
         if ((tamanho == 4 && verificaConjunto(teste->jogada,tamanho)) || (tamanho == 6 && verificaSequenciaDupla(teste->jogada,tamanho))) r=1;
@@ -94,6 +95,23 @@ int verificaRei (TESTEC *teste)
     else if (valor(teste->jogadasAns[linha][1])==Rei && valor(teste->jogadasAns[linha][0])==Rei && valor(teste->jogadasAns[linha][2])==Rei && tamanhoAns == 3) 
     {
         if (tamanho >= 10 && verificaSequenciaDupla(teste->jogada,tamanho)) r=1;
+    }
+    return r;
+}
+
+int verificaReiAux (TESTEC *teste) { //reduzir complexidade
+    int r=0;
+    int linha = TresPasso(teste);
+    int tamanho = wcslen(teste->jogada);
+    int tamanhoAns = wcslen(teste->jogadasAns[linha]);
+    if (valor(teste->jogadasAns[linha][0])==Rei && tamanhoAns == 1) 
+    {
+        if (maior(teste->jogada[0], teste->jogadasAns[linha][0]) && tamanho == 1) r = 1; 
+    }
+
+     else if (valor(teste->jogadasAns[linha][1])==Rei && valor(teste->jogadasAns[linha][0])==Rei && tamanhoAns == 2) 
+    {
+        if (maior(teste->jogada[1], teste->jogadasAns[linha][1]) && tamanho == 2) r = 1;
     }
     return r;
 }
