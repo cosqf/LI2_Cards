@@ -1,10 +1,13 @@
 #ifndef __GUIAO2_H__
 #define __GUIAO2_H__
 
+
+#define MAX 50
+
 typedef struct teste {
     int nlinhas;                // tamanho do array 2d
     size_t tamanho;                // tamanho comum a todas as linhas; se for 0, o tamanho das linhas
-    wchar_t cartas[MAX][MAX];
+    wchar_t cartas[50][50];
 } TESTE;
 
 void leInputs (int, TESTE[]);

@@ -8,6 +8,8 @@ typedef struct testec {
     wchar_t jogada[20];
 } TESTEC;
 
+void registaC(wchar_t [][20], int );
+
 void input (int, TESTEC[]);
 
 void organizaJogadas(int ,TESTEC []);

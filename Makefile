@@ -1,6 +1,6 @@
 CFLAGS = -Wall -Wextra -pedantic -O2 -g
 
-cards: main.o guiao1.o guiao2.o guiao3.o guiao4.o
+cards: main.o guiao1.o guiao2.o guiao3.o guiao4.o bot.o
 	gcc $(CFLAGS) -o $@ $^
 
 # Procura funções demasiado complexas 
@@ -27,6 +27,9 @@ guiao3.o: guiao3.c guiao3.h guiao2.h guiao1.h
 
 guiao4.o: guiao4.c guiao4.h guiao3.h guiao2.h guiao1.h
 	gcc $(CFLAGS) -c guiao4.c
+
+bot.o: bot.c bot.h guiao4.h guiao3.h guiao2.h guiao1.h
+	gcc $(CFLAGS) -c bot.c
 
 codigo.zip: *.h *.c
 	zip -9r $@ $^	

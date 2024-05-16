@@ -2,6 +2,7 @@
 #include <locale.h>
 #include <wchar.h>
 #include <assert.h>
+#include "bot.h"
 #include "guiao1.h"
 #include "guiao2.h"
 #include "guiao3.h"
@@ -49,7 +50,7 @@ int main () {
     
 */
     
-    int ntestes;                                                // nº de testes
+/*  int ntestes;                                                // nº de testes
     assert (wscanf (L"%d\n", &ntestes) == 1);                   // lê o nº de testes
 
     TESTEC inputs[ntestes];
@@ -59,7 +60,8 @@ int main () {
     organizaJogadas(ntestes,inputs);
 
     output(ntestes,inputs);
-    
+
+    */
 /*
     int ntestes;
     assert (wscanf (L"%d\n", &ntestes) == 1);
@@ -74,5 +76,14 @@ int main () {
         geraCombinacoes(&inputs[i]);
     }
 */
+    TESTEC input;
+
+    inputD (input);
+
+    jogadaBOT (input);
+
+
+
+
     return 0;
 }
