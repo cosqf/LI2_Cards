@@ -30,12 +30,14 @@ void swap(wchar_t jogada[], int pos1, int pos2) {   // troca duas cartas de posi
 }
 
 int maior (wchar_t carta1, wchar_t carta2){    // retorna 1 se carta1 é maior que carta2
-    assert(carta1 != carta2);
     int r = 0;
-    if (valor(carta1) > valor(carta2)) r = 1;
-    else if (valor(carta1) == valor(carta2)) 
-         {
-            if (naipe(carta1) > naipe(carta2)) r = 1;
+    if (!(carta1==0 && carta2 == 0)) {
+        assert(carta1 != carta2);
+        if (valor(carta1) > valor(carta2)) r = 1;
+        else if (valor(carta1) == valor(carta2)) 
+            {
+                if (naipe(carta1) > naipe(carta2)) r = 1;
+            }
          }
     return r;
 }

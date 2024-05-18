@@ -84,21 +84,21 @@ int geraConjuntosD  (wchar_t mao[], int size_ult, wchar_t maior_ult) {
 
 int geraSequenciasD (wchar_t mao[], int size_ult, wchar_t maior_ult) {
 
-    ///*debug*/wprintf (L"gera seq, Mao:%ls\n", mao);
+    ///*debug*/wprintf (L"gera seq, Mao:%ls, size: %d, maior carta: %d\n", mao, size_ult, maior_ult);
 
     int check = 0;
     int checkD = 0;
     int size_mao = wcslen(mao);
     wchar_t mao_usable[MAX_MAO] = {0};
 
-    //filtraSeq ( mao, size_ult, mao_usable, size_mao);
+    filtraSeq (mao, size_ult, mao_usable, size_mao);
     ///*debug*/wprintf (L"seq, mao usable: %ls\n", mao_usable);
 
-    //wchar_t size_mao_usable = wcslen(mao_usable);
+    wchar_t size_mao_usable = wcslen(mao_usable);
     wchar_t combinacoes[MAX_MAO] = {0};
-    if (mao[0] == '\0' || maior (maior_ult, mao[size_mao-1]));
+    if (mao[0] == '\0' || maior (maior_ult, mao_usable[size_mao_usable-1]));
     else {
-        combinaSeqD (mao, size_mao, size_ult, combinacoes, 0, maior_ult, &check, &checkD);
+        combinaSeqD (mao_usable, size_mao_usable, size_ult, combinacoes, 0, maior_ult, &check, &checkD);
         if (!check){}; // a tirar um "passo" aqui
     }
     return checkD;
@@ -206,16 +206,19 @@ int printDupSeqD (wchar_t seq[], int iter, wchar_t maior_ult) {
 }
 
 void geraCombinacoesD (TESTED *teste) {
+    int p = 0;
     COMBINACAO r = combinacaoUltima (teste->ultima);
     int size_ult = wcslen(teste->ultima);
     wchar_t maior = teste->ultima[size_ult-1];
     
     // reis
     if(valor(teste->ultima[0]) == Rei) geraReiD(teste->mao,size_ult,maior);
-
-    else if (r == Conjunto)  geraConjuntosD (teste->mao, size_ult, maior);
-    else if (r == Sequencia) geraSequenciasD (teste->mao, size_ult, maior);
-    else if (r == DuplaSequencia) geraDuplasSequenciasD (teste->mao, size_ult, maior,0);
+    else {
+        if (r == Conjunto)  p = geraConjuntosD (teste->mao, size_ult, maior);
+        else if (r == Sequencia) p = geraSequenciasD (teste->mao, size_ult, maior);
+        else if (r == DuplaSequencia) p = geraDuplasSequenciasD (teste->mao, size_ult, maior,0);
+        if (!p) wprintf (L"PASSO\n");
+    }
 }
 
 
@@ -224,22 +227,23 @@ void jogadaBOT (TESTEC *input) {
     ///*debug*/wprintf (L"Tres Passo: %d\n", ind);
     TESTED t;
     wcscpy(t.mao, input->mao);
-    /*debug*/ wprintf (L"Mao na main:\n");
-    /*debug*/ wprintf (L"%ls\n", t.mao);
+    ///*debug*/ wprintf (L"Mao na main:\n");
+    ///*debug*/ wprintf (L"%ls\n", t.mao);
     if (ind != -1) {
         wcscpy(t.ultima,input->jogadasAns[ind]);
         geraCombinacoesD(&t);
     }
     else {
         int r=0;
-        for (int i = 14,j = 4; i>0 && !r;i--,j--) {
-            /*debug*/wprintf (L"tamanho seq : %d, tamanho conj: %d\n", i, j);
+        for (int i = 14,j = 4; i>0 && !r;i--) {
+            ///*debug*/wprintf (L"tamanho seq : %d, tamanho conj: %d\n", i, j);
             r = geraDuplasSequenciasD (t.mao, i, 0, 0);
             ///*debug*/ wprintf (L"dup seq r = %d\n", r);
             if (!r) r = geraSequenciasD (t.mao, i, 0);
-            /*debug*/ wprintf (L"seq r = %d\n", r);
-            if (!r && j > 0) r = (geraConjuntosD  (t.mao, j, 0));
-            /*debug*/ wprintf (L"conj r = %d\n", r);
+            ///*debug*/ wprintf (L"seq r = %d\n", r);
+            if (!r && i <= 4) r = (geraConjuntosD  (t.mao, j, 0));
+            ///*debug*/ wprintf (L"conj r = %d\n", r);
+            if (i<=4) j--;
         }
         if (!r) wprintf (L"PASSO\n");
     }
