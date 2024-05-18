@@ -80,7 +80,7 @@ int main () {
 
     inputD (&input);
 
-    jogadaBOT (input);
+    jogadaBOT (&input);
 
     return 0;
 }

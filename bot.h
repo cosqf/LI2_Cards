@@ -30,6 +30,6 @@ int printDupSeqD (wchar_t[], int, wchar_t);
 
 void geraCombinacoesD (TESTED *);
 
-void jogadaBOT (TESTEC);
+void jogadaBOT (TESTEC *);
 
 #endif

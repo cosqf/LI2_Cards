@@ -219,15 +219,15 @@ void geraCombinacoesD (TESTED *teste) {
 }
 
 
-void jogadaBOT (TESTEC input) {
-    int ind = TresPasso(&input);
+void jogadaBOT (TESTEC *input) {
+    int ind = TresPasso(input);
     ///*debug*/wprintf (L"Tres Passo: %d\n", ind);
     TESTED t;
-    wcscpy(t.mao, input.mao);
+    wcscpy(t.mao, input->mao);
     /*debug*/ wprintf (L"Mao na main:\n");
     /*debug*/ wprintf (L"%ls\n", t.mao);
     if (ind != -1) {
-        wcscpy(t.ultima,input.jogadasAns[ind]);
+        wcscpy(t.ultima,input->jogadasAns[ind]);
         geraCombinacoesD(&t);
     }
     else {
