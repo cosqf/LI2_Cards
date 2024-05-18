@@ -4,7 +4,11 @@
 #include "guiao4.h"
 #include "guiao3.h"
 
-void inputD (TESTEC );
+void inputD (TESTEC *);
+
+void geraReiD (wchar_t [], int , wchar_t );
+
+int  geraConjuntosReisD (wchar_t [], int , wchar_t) ;
 
 int geraConjuntosD  (wchar_t[], int, wchar_t);
 

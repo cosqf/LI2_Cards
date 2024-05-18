@@ -78,12 +78,9 @@ int main () {
 */
     TESTEC input;
 
-    inputD (input);
+    inputD (&input);
 
     jogadaBOT (input);
-
-
-
 
     return 0;
 }
