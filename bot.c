@@ -9,7 +9,7 @@
 #include "guiao1.h"
 
 
-void inputD (TESTEC *input) {
+void inputE (TESTEC *input) {
     wchar_t buffer[MAX];
 
     wscanf (L"%d\n", &(input->njogadas));
@@ -22,30 +22,30 @@ void inputD (TESTEC *input) {
     registaC (input->jogadasAns, input->njogadas);
 }
 
-void geraReiD (wchar_t mao[], int size_ult, wchar_t maior_ult) {
+void geraReiE (wchar_t mao[], int size_ult, wchar_t maior_ult) {
     int r=0, r1=0, r2=0;
     if (size_ult == 1) {
-        r1=geraConjuntosReisD(mao,size_ult,maior_ult);
-        r2=geraConjuntosReisD(mao,4,0);
-        r= r1 || r2;
-        geraDuplasSequenciasD(mao,6,0,r);
+        r1 = geraConjuntosReis(mao, size_ult, maior_ult); // gera os reis maiores q o rei anterior
+        r2 = geraConjuntosReis(mao,4,0); // gera conjuntos de reis de tamanho 4
+        r = r1 || r2;
+        geraDuplasSequencias(mao,6,0,r); // gera dup sequencias de tamanho 6 
     }
     else if (size_ult==2) {
-        r=geraConjuntosReisD(mao,size_ult,maior_ult);
-        geraDuplasSequenciasD(mao,8,0,r);
+        r=geraConjuntosReisE(mao,size_ult,maior_ult);
+        geraDuplasSequenciasE(mao,8,0,r);
     }
     else if (size_ult==3) {
-        geraDuplasSequenciasD(mao,10,0,0);
+        geraDuplasSequenciasE(mao,10,0,0);
     }
     else if (size_ult==4) {
         wprintf(L"PASSO\n");
     }
 }
 
-int  geraConjuntosReisD (wchar_t mao[], int size_ult, wchar_t maior_ult) {
+int  geraConjuntosReisE (wchar_t mao[], int size_ult, wchar_t maior_ult) {
     int r=0;
     int check = 1;
-    int checkD = 0;
+    int checkE = 0;
     wchar_t mao_usable[MAX_MAO] = {0};
 
     filtraConj (mao, size_ult, mao_usable);
@@ -55,33 +55,33 @@ int  geraConjuntosReisD (wchar_t mao[], int size_ult, wchar_t maior_ult) {
 
     if (mao_usable[0] == '\0' || maior (maior_ult, mao_usable[size_mao-1]));
     else {
-        combinaConjD (mao_usable, size_mao, size_ult, combinacoes, 0, maior_ult,&check,&checkD);
-        r=1;
+        combinaConjE (mao_usable, size_mao, size_ult, combinacoes, 0, maior_ult, &check, &checkE);
+        r = 1;
     }
     return r;
 }
 
 
-int geraConjuntosD  (wchar_t mao[], int size_ult, wchar_t maior_ult) {
+int geraConjuntosE  (wchar_t mao[], int size_ult, wchar_t maior_ult) {
 
     wchar_t mao_usable[MAX_MAO] = {0};
     int check = 0;
-    int checkD = 0;
+    int checkE = 0;
     filtraConj (mao, size_ult, mao_usable);
 
     wchar_t combinacoes[MAX_MAO] = {0};
     int size_mao = wcslen(mao_usable);
 
     if (mao_usable[0] == '\0' || maior (maior_ult, mao_usable[size_mao-1]));
-    else combinaConjD (mao_usable, size_mao, size_ult, combinacoes, 0, maior_ult,&check, &checkD);
-    return checkD;
+    else combinaConjE (mao_usable, size_mao, size_ult, combinacoes, 0, maior_ult, &check, &checkE);
+    return checkE;
 }
 
 
-int geraSequenciasD (wchar_t mao[], int size_ult, wchar_t maior_ult) {
+int geraSequenciasE (wchar_t mao[], int size_ult, wchar_t maior_ult) {
 
     int check = 0;
-    int checkD = 0;
+    int checkE = 0;
     int size_mao = wcslen(mao);
     wchar_t mao_usable[MAX_MAO] = {0};
 
@@ -91,15 +91,14 @@ int geraSequenciasD (wchar_t mao[], int size_ult, wchar_t maior_ult) {
     wchar_t combinacoes[MAX_MAO] = {0};
     if (mao[0] == '\0' || maior (maior_ult, mao_usable[size_mao_usable-1]));
     else {
-        combinaSeqD (mao_usable, size_mao_usable, size_ult, combinacoes, 0, maior_ult, &check, &checkD);
-        if (!check){}; // a tirar um "passo" aqui
+        combinaSeqE (mao_usable, size_mao_usable, size_ult, combinacoes, 0, maior_ult, &check, &checkE);
     }
-    return checkD;
+    return checkE;
 }
 
-int geraDuplasSequenciasD (wchar_t mao[], int size_ult, wchar_t maior_ult, int r2) {
+int geraDuplasSequenciasE (wchar_t mao[], int size_ult, wchar_t maior_ult, int r2) {
     int check = 0;
-    int checkD = 0;
+    int checkE = 0;
     int size_mao = wcslen(mao);
     wchar_t mao_usable[MAX_MAO] = {0};
 
@@ -110,55 +109,54 @@ int geraDuplasSequenciasD (wchar_t mao[], int size_ult, wchar_t maior_ult, int r
 
     if ((mao_usable[0] == '\0' || maior (maior_ult, mao_usable[size_mao_usable-1])) && !r2 );  // r2 é igual a 1 se forem jogados reis antes de verificar as duplas sequencias
     else  {
-        combinaDupSeqD (mao_usable, size_mao_usable, size_ult, combinacoes, 0, maior_ult, &check, &checkD);
-        if (check==0 && !r2){};  // a tirar um "passo" aqui
+        combinaDupSeqE (mao_usable, size_mao_usable, size_ult, combinacoes, 0, maior_ult, &check, &checkE);
     }
-    return checkD;
+    return checkE;
 }
 
 
 
-void combinaConjD(wchar_t input[], int tamanho, int num, wchar_t combinacao[], int iter, wchar_t maior_ult, int *check,int *checkD) {
-    if (!*checkD) {
+void combinaConjE(wchar_t input[], int tamanho, int num, wchar_t combinacao[], int iter, wchar_t maior_ult, int *check,int *checkE) {
+    if (!*checkE) {
         if (num == 0) {
-            if (printConjD (combinacao, iter, maior_ult)) *checkD = 1;
+            if (printConjE (combinacao, iter, maior_ult)) *checkE = 1;
         }
-        else for (int i = 0; i < tamanho && ! *checkD; i++) {
+        else for (int i = 0; i < tamanho && ! *checkE; i++) {
             combinacao[iter] = input[i];
-            combinaConjD (input + i + 1, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult,check, checkD);
+            combinaConjE (input + i + 1, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult,check, checkE);
         }
     }
 }
 
-void combinaSeqD(wchar_t input[], int tamanho, int num, wchar_t combinacao[], int iter, wchar_t maior_ult, int *check, int *checkD) {
-    if (!*checkD) {
+void combinaSeqE(wchar_t input[], int tamanho, int num, wchar_t combinacao[], int iter, wchar_t maior_ult, int *check, int *checkE) {
+    if (!*checkE) {
         if (num == 0) {
-            if (printSeqD (combinacao, iter, maior_ult)) *checkD = 1;
+            if (printSeqD (combinacao, iter, maior_ult)) *checkE = 1;
         }
-        else for (int i = 0; i < tamanho && ! *checkD; i++) {
+        else for (int i = 0; i < tamanho && ! *checkE; i++) {
             combinacao[iter] = input[i];
-            if (i+1 < tamanho && valor (input[i]) == valor (input[i+1]) ) combinaSeqD (input + i + 2, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult,check,checkD);
-            else combinaSeqD (input + i + 1, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult, check, checkD);
+            if (i+1 < tamanho && valor (input[i]) == valor (input[i+1]) ) combinaSeqE (input + i + 2, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult,check,checkE);
+            else combinaSeqE (input + i + 1, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult, check, checkE);
         }
     }
 }
 
-void combinaDupSeqD(wchar_t input[], int tamanho, int num, wchar_t combinacao[], int iter, wchar_t maior_ult, int *check, int *checkD) {
-    if (!*checkD) {
+void combinaDupSeqE(wchar_t input[], int tamanho, int num, wchar_t combinacao[], int iter, wchar_t maior_ult, int *check, int *checkE) {
+    if (!*checkE) {
         if (num == 0) {
-            if (printDupSeqD (combinacao, iter, maior_ult)) *checkD = 1;
+            if (printDupSeqE (combinacao, iter, maior_ult)) *checkE = 1;
         }
-        else for (int i = 0; i < tamanho && ! *checkD; i++) {
+        else for (int i = 0; i < tamanho && ! *checkE; i++) {
             combinacao[iter] = input[i];
 
-            combinaDupSeqD (input + i + 1, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult, check, checkD);
+            combinaDupSeqE (input + i + 1, tamanho - i - 1, num - 1, combinacao, iter + 1, maior_ult, check, checkE);
             
         }
     }
 }
 
 
-int printConjD(wchar_t conj[], int iter, wchar_t maior_ult) {
+int printConjE(wchar_t conj[], int iter, wchar_t maior_ult) {
     int i,r=0;
     if (maior (conj[iter-1], maior_ult) && verificaConjunto (conj, iter)) {
         for (i = 0; i < iter-1; i++) {
@@ -182,7 +180,7 @@ int printSeqD (wchar_t seq[], int iter, wchar_t maior_ult) {
     return r;
 }
 
-int printDupSeqD (wchar_t seq[], int iter, wchar_t maior_ult) {
+int printDupSeqE (wchar_t seq[], int iter, wchar_t maior_ult) {
     int i, r=0;
     if (maior (seq[iter-1], maior_ult) && verificaSequenciaDupla (seq, iter)) {
         for (i = 0; i < iter-1; i++) {
@@ -194,18 +192,18 @@ int printDupSeqD (wchar_t seq[], int iter, wchar_t maior_ult) {
     return r;
 }
 
-void geraCombinacoesD (TESTED *teste) {
+void geraCombinacoesE (TESTED *teste) {
     int p = 0;
     COMBINACAO r = combinacaoUltima (teste->ultima);
     int size_ult = wcslen(teste->ultima);
     wchar_t maior = teste->ultima[size_ult-1];
     
     // reis
-    if(valor(teste->ultima[0]) == Rei) geraReiD(teste->mao,size_ult,maior);
+    if(valor(teste->ultima[0]) == Rei) geraReiE(teste->mao,size_ult,maior);
     else {
-        if (r == Conjunto)  p = geraConjuntosD (teste->mao, size_ult, maior);
-        else if (r == Sequencia) p = geraSequenciasD (teste->mao, size_ult, maior);
-        else if (r == DuplaSequencia) p = geraDuplasSequenciasD (teste->mao, size_ult, maior,0);
+        if (r == Conjunto)  p = geraConjuntosE (teste->mao, size_ult, maior);
+        else if (r == Sequencia) p = geraSequenciasE (teste->mao, size_ult, maior);
+        else if (r == DuplaSequencia) p = geraDuplasSequenciasE (teste->mao, size_ult, maior,0);
         if (!p) wprintf (L"PASSO\n");
     }
 }
@@ -218,15 +216,15 @@ void jogadaBOT (TESTEC *input) {
    
     if (ind != -1) {
         wcscpy(t.ultima,input->jogadasAns[ind]);
-        geraCombinacoesD(&t);
+        geraCombinacoesE(&t);
     }
     else {
-        int r=0;
-        for (int i = 14,j = 4; i>0 && !r;i--) {
-            r = geraDuplasSequenciasD (t.mao, i, 0, 0);
-            if (!r) r = geraSequenciasD (t.mao, i, 0);
-            if (!r && i <= 4) r = (geraConjuntosD  (t.mao, j, 0));
-            if (i<=4) j--;
+        int r = 0; // check se printou
+        for (int i = 14,j = 4; i>0 && !r ;i--) {
+            r = geraDuplasSequenciasE (t.mao, i, 0, 0);
+            if (!r) r = geraSequenciasE (t.mao, i, 0);
+            if (!r && i <= 4) r = (geraConjuntosE  (t.mao, j, 0));
+            if (i <= 4) j--;
         }
         if (!r) wprintf (L"PASSO\n");
     }

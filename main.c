@@ -12,7 +12,7 @@ int main () {
     setlocale (LC_CTYPE, "C.UTF-8");
 
     
-    /*
+/* Main guiao 1
     int nlinhas;                         // linhas de teste
     assert (wscanf (L"%d\n", &nlinhas) == 1);          // lê o nº de linhas de teste
 
@@ -34,7 +34,7 @@ int main () {
     }
     */
 
-    /*
+/* Main guiao 2
     int ntestes;                                                // nº de testes
     assert (wscanf (L"%d\n", &ntestes) == 1);                   // lê o nº de testes
 
@@ -50,7 +50,8 @@ int main () {
     
 */
     
-/*  int ntestes;                                                // nº de testes
+/*  Main guiao 3
+    int ntestes;                                                // nº de testes
     assert (wscanf (L"%d\n", &ntestes) == 1);                   // lê o nº de testes
 
     TESTEC inputs[ntestes];
@@ -61,8 +62,9 @@ int main () {
 
     output(ntestes,inputs);
 
-    */
-/*
+*/
+
+/*  Main guiao 4
     int ntestes;
     assert (wscanf (L"%d\n", &ntestes) == 1);
 
@@ -76,6 +78,9 @@ int main () {
         geraCombinacoes(&inputs[i]);
     }
 */
+    
+//  Main bot
+
     TESTEC input;
 
     inputD (&input);

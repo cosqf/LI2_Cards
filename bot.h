@@ -4,31 +4,31 @@
 #include "guiao4.h"
 #include "guiao3.h"
 
-void inputD (TESTEC *);
+void inputE (TESTEC *);
 
-void geraReiD (wchar_t [], int , wchar_t );
+void geraReiE (wchar_t [], int , wchar_t );
 
-int  geraConjuntosReisD (wchar_t [], int , wchar_t) ;
+int  geraConjuntosReisE (wchar_t [], int , wchar_t) ;
 
-int geraConjuntosD  (wchar_t[], int, wchar_t);
+int geraConjuntosE  (wchar_t[], int, wchar_t);
 
-int geraSequenciasD (wchar_t[], int, wchar_t);
+int geraSequenciasE (wchar_t[], int, wchar_t);
 
-int geraDuplasSequenciasD (wchar_t[], int, wchar_t, int);
+int geraDuplasSequenciasE (wchar_t[], int, wchar_t, int);
 
-void combinaConjD(wchar_t[], int, int, wchar_t[], int, wchar_t, int *,int *);
+void combinaConjE (wchar_t[], int, int, wchar_t[], int, wchar_t, int *,int *);
 
-void combinaSeqD(wchar_t[], int, int, wchar_t[], int, wchar_t, int *, int *);
+void combinaSeqE (wchar_t[], int, int, wchar_t[], int, wchar_t, int *, int *);
 
-void combinaDupSeqD(wchar_t[], int, int, wchar_t[], int, wchar_t, int *, int *);
+void combinaDupSeqE (wchar_t[], int, int, wchar_t[], int, wchar_t, int *, int *);
 
-int printConjD(wchar_t[], int, wchar_t);
+int printConjE (wchar_t[], int, wchar_t);
 
-int printSeqD (wchar_t[], int, wchar_t);
+int printSeqE (wchar_t[], int, wchar_t);
 
-int printDupSeqD (wchar_t[], int, wchar_t);
+int printDupSeqE (wchar_t[], int, wchar_t);
 
-void geraCombinacoesD (TESTED *);
+void geraCombinacoesE (TESTED *);
 
 void jogadaBOT (TESTEC *);
 

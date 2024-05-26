@@ -22,7 +22,7 @@ void geraCombinacoes (TESTED *);
 
 void geraConjuntos (wchar_t [], int , wchar_t );
 
-int frequencia (wchar_t [], wchar_t );
+int freqConj (wchar_t [], wchar_t );
 
 void filtraConj (wchar_t [], int , wchar_t []);
 
